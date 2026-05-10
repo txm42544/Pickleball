@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
-import { resolveImageUrl } from '../utils/api';
+import { DEFAULT_PRODUCT_IMAGE, resolveImageUrl, withFallbackImage } from '../utils/api';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -27,7 +27,11 @@ const ProductCard = ({ product }) => {
   return (
     <Link to={`/product/${product.id}`} className="product-card">
       <div className="product-image-card">
-        <img src={resolveImageUrl(product.image_url) || '/images/placeholder.jpg'} alt={product.name} />
+        <img
+          src={resolveImageUrl(product.image_url) || DEFAULT_PRODUCT_IMAGE}
+          alt={product.name}
+          onError={(e) => withFallbackImage(e, DEFAULT_PRODUCT_IMAGE)}
+        />
         {product.is_new && <span className="badge badge-new">NEW</span>}
         {/* Ẩn badge giảm giá
         {product.discount_percent > 0 && (

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import axios from "axios";
 import { useAlert } from "../../context/AlertContext";
-import { withUploadBase } from "../../utils/api";
+import { DEFAULT_PAYMENT_IMAGE, withFallbackImage, withUploadBase } from "../../utils/api";
 
 export function DatSanThang() {
 	const [activeTab] = useState("weekday");
@@ -755,6 +755,7 @@ export function DatSanThang() {
 									src={withUploadBase(`/uploads/payments/${selectedMonthlyBooking.PaymentScreenshot}`)}
 									alt="Payment"
 									style={{ width: "100%", marginTop: "10px", cursor: "pointer" }}
+									onError={(e) => withFallbackImage(e, DEFAULT_PAYMENT_IMAGE)}
 									onClick={() => setZoomedImage(selectedMonthlyBooking.PaymentScreenshot)}
 								/>
 							)}
@@ -808,7 +809,11 @@ export function DatSanThang() {
 
 			{zoomedImage && (
 				<div className="image-modal" onClick={() => setZoomedImage(null)}>
-					<img src={withUploadBase(`/uploads/payments/${zoomedImage}`)} alt="Payment" />
+					<img
+						src={withUploadBase(`/uploads/payments/${zoomedImage}`)}
+						alt="Payment"
+						onError={(e) => withFallbackImage(e, DEFAULT_PAYMENT_IMAGE)}
+					/>
 				</div>
 			)}
 

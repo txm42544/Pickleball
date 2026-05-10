@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useCart } from '../../context/CartContext';
 import ProductCard from '../../components/ProductCard';
 import '../../css/ProductDetail.css';
-import { resolveImageUrl } from '../../utils/api';
+import { DEFAULT_PRODUCT_IMAGE, resolveImageUrl, withFallbackImage } from '../../utils/api';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -98,12 +98,20 @@ const ProductDetail = () => {
                                     className={`thumb ${selectedImage === index ? 'active' : ''}`}
                                     onClick={() => setSelectedImage(index)}
                                 >
-                                    <img src={img || '/images/placeholder.jpg'} alt={`${product.name} ${index + 1}`} />
+                                    <img
+                                        src={img || DEFAULT_PRODUCT_IMAGE}
+                                        alt={`${product.name} ${index + 1}`}
+                                        onError={(e) => withFallbackImage(e, DEFAULT_PRODUCT_IMAGE)}
+                                    />
                                 </button>
                             ))}
                         </div>
                         <div className="gallery-main">
-                            <img src={displayImages[selectedImage] || '/images/placeholder.jpg'} alt={product.name} />
+                            <img
+                                src={displayImages[selectedImage] || DEFAULT_PRODUCT_IMAGE}
+                                alt={product.name}
+                                onError={(e) => withFallbackImage(e, DEFAULT_PRODUCT_IMAGE)}
+                            />
                             {product.is_new && <span className="badge badge-new">MỚI</span>}
                             {product.discount_percent > 0 && (
                                 <span className="badge badge-discount">-{product.discount_percent}%</span>

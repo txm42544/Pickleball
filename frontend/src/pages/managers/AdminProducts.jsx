@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/AdminProducts.css';
 import { Sidebar } from '../../components/Sidebar';
-import { resolveImageUrl } from '../../utils/api';
+import { DEFAULT_PRODUCT_IMAGE, resolveImageUrl, withFallbackImage } from '../../utils/api';
 
 const AdminProducts = () => {
     const [products, setProducts] = useState([]);
@@ -117,7 +117,7 @@ const AdminProducts = () => {
         setEditMode(true);
         setShowModal(true);
         setImageFile(null);
-        setImagePreview(product.image_url || '');
+        setImagePreview(resolveImageUrl(product.image_url) || '');
     };
 
     const closeModal = () => {
@@ -225,9 +225,10 @@ const AdminProducts = () => {
                                 <tr key={product.id}>
                                     <td>
                                         <img
-                                            src={resolveImageUrl(product.image_url) || '/images/default-product.png'}
+                                            src={resolveImageUrl(product.image_url) || DEFAULT_PRODUCT_IMAGE}
                                             alt={product.name}
                                             className="product-thumb"
+                                            onError={(e) => withFallbackImage(e, DEFAULT_PRODUCT_IMAGE)}
                                         />
                                     </td>
                                     <td>
@@ -405,7 +406,12 @@ const AdminProducts = () => {
                                 {imagePreview && (
                                     <div className="form-group">
                                         <label>Xem trước ảnh</label>
-                                        <img src={imagePreview} alt="Preview" style={{ maxWidth: '100px', borderRadius: '4px' }} />
+                                        <img
+                                            src={imagePreview}
+                                            alt="Preview"
+                                            style={{ maxWidth: '100px', borderRadius: '4px' }}
+                                            onError={(e) => withFallbackImage(e, DEFAULT_PRODUCT_IMAGE)}
+                                        />
                                     </div>
                                 )}
 

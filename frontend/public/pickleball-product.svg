@@ -1,0 +1,18 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="250" cy="420" rx="100" ry="170" fill="#94A3B8" fill-opacity="0.45" stroke="#E2E8F0" stroke-opacity="0.6" stroke-width="8"/>
+  <rect x="220" y="540" width="60" height="140" rx="24" fill="#F59E0B"/>
+  <ellipse cx="520" cy="390" rx="100" ry="170" fill="#64748B" fill-opacity="0.45" stroke="#CBD5E1" stroke-opacity="0.6" stroke-width="8"/>
+  <rect x="490" y="510" width="60" height="160" rx="24" fill="#F97316"/>
+  <circle cx="620" cy="220" r="74" fill="#FACC15" fill-opacity="0.9"/>
+  <circle cx="620" cy="180" r="6.5" fill="#fff"/>
+  <circle cx="585" cy="245" r="6.5" fill="#fff"/>
+  <circle cx="655" cy="252" r="6.5" fill="#fff"/>
+  <text x="64" y="746" fill="#fff" fill-opacity="0.24" font-family="Arial, sans-serif" font-size="52" font-weight="700">PICKLEBALL GEAR</text>
+</svg>

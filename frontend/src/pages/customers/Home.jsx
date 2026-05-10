@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../css/Home.css";
-import { withUploadBase } from "../../utils/api";
+import {
+  DEFAULT_CATEGORY_IMAGE,
+  DEFAULT_HERO_IMAGE,
+  withFallbackImage,
+  withUploadBase,
+} from "../../utils/api";
 
 const Home = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -30,8 +35,9 @@ const Home = () => {
         {/* Ảnh nền */}
         <div className="hero-background">
           <img
-            src={withUploadBase("/uploads/categories/Huong-dan-cach-chon-vot-Pickleball-phu-hop-va-chuan-nhat-Hoc-Vien-VNTA-8.webp")}
+            src={DEFAULT_HERO_IMAGE}
             alt="Dụng cụ Pickleball cao cấp"
+            onError={(e) => withFallbackImage(e, DEFAULT_HERO_IMAGE)}
           />
           <div className="hero-overlay"></div>
         </div>
@@ -126,8 +132,9 @@ const Home = () => {
             </div>
             <div className="vip-info-image">
               <img 
-                src={withUploadBase("/uploads/categories/Huong-dan-cach-chon-vot-Pickleball-phu-hop-va-chuan-nhat-Hoc-Vien-VNTA-8.webp")}
+                src={DEFAULT_HERO_IMAGE}
                 alt="Sân VIP Pickleball"
+                onError={(e) => withFallbackImage(e, DEFAULT_CATEGORY_IMAGE)}
               />
             </div>
           </div>

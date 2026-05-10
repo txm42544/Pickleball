@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/AdminCategories.css';
 import { Sidebar } from '../../components/Sidebar'; // Đảm bảo import Sidebar
-import { resolveImageUrl } from '../../utils/api';
+import { DEFAULT_CATEGORY_IMAGE, resolveImageUrl, withFallbackImage } from '../../utils/api';
 
 const AdminCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -82,7 +82,7 @@ const AdminCategories = () => {
     setEditMode(true);
     setCurrentCategory(category);
     setImageFile(null);
-    setImagePreview(category.image_url || '');
+    setImagePreview(resolveImageUrl(category.image_url) || '');
     setShowModal(true);
   };
 
@@ -162,7 +162,11 @@ const AdminCategories = () => {
             <div key={category.id} className="category-card">
               <div className="category-image">
                 {category.image_url ? (
-                  <img src={resolveImageUrl(category.image_url)} alt={category.name} />
+                  <img
+                    src={resolveImageUrl(category.image_url) || DEFAULT_CATEGORY_IMAGE}
+                    alt={category.name}
+                    onError={(e) => withFallbackImage(e, DEFAULT_CATEGORY_IMAGE)}
+                  />
                 ) : (
                   <div className="no-image">No Image</div>
                 )}
@@ -230,7 +234,11 @@ const AdminCategories = () => {
                 {imagePreview && (
                   <div className="image-preview">
                     <label>Preview:</label>
-                    <img src={imagePreview} alt="Preview" />
+                    <img
+                      src={imagePreview}
+                      alt="Preview"
+                      onError={(e) => withFallbackImage(e, DEFAULT_CATEGORY_IMAGE)}
+                    />
                   </div>
                 )}
 

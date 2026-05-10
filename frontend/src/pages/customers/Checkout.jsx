@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import axios from 'axios';
 import '../../css/Checkout.css';
-import { resolveImageUrl } from '../../utils/api';
+import { DEFAULT_PRODUCT_IMAGE, resolveImageUrl, withFallbackImage } from '../../utils/api';
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -226,7 +226,11 @@ const Checkout = () => {
             <div className="order-items">
               {cartItems.map((item) => (
                 <div key={item.product_id} className="order-item">
-                  <img src={resolveImageUrl(item.image_url) || '/images/placeholder.jpg'} alt={item.name} />
+                  <img
+                    src={resolveImageUrl(item.image_url) || DEFAULT_PRODUCT_IMAGE}
+                    alt={item.name}
+                    onError={(e) => withFallbackImage(e, DEFAULT_PRODUCT_IMAGE)}
+                  />
                   <div className="item-details">
                     <h4>{item.name}</h4>
                     {item.color && <p>Màu: {item.color}</p>}

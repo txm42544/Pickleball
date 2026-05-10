@@ -1,21 +1,24 @@
 import mysql from 'mysql2/promise';
 
-// Đọc các biến môi trường, nếu không có thì fallback về XAMPP defaults
-const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || '',
-  database: process.env.DB_NAME || 'pickleball',
-  port: process.env.DB_PORT || 3306,
-};
+const databaseUrl = process.env.DATABASE_URL || process.env.MYSQL_URL || '';
+const hasUrlConfig = Boolean(databaseUrl);
+const dbConfig = hasUrlConfig
+  ? databaseUrl
+  : {
+      host: process.env.DB_HOST || 'localhost',
+      user: process.env.DB_USER || 'root',
+      password: process.env.DB_PASS || '',
+      database: process.env.DB_NAME || 'pickleball',
+      port: process.env.DB_PORT || 3306,
+    };
 
 // In các biến môi trường ra để debug
 console.log('Database Configuration:', {
-  host: dbConfig.host,
-  user: dbConfig.user,
-  database: dbConfig.database,
-  port: dbConfig.port,
-  password: dbConfig.password ? '***' : '(empty)',
+  source: hasUrlConfig ? 'DATABASE_URL' : 'DB_* env',
+  host: hasUrlConfig ? '(from DATABASE_URL)' : dbConfig.host,
+  user: hasUrlConfig ? '(from DATABASE_URL)' : dbConfig.user,
+  database: hasUrlConfig ? '(from DATABASE_URL)' : dbConfig.database,
+  port: hasUrlConfig ? '(from DATABASE_URL)' : dbConfig.port,
 });
 
 const pool = mysql.createPool({

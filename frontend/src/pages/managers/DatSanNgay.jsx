@@ -4,7 +4,7 @@ import { Sidebar } from "../../components/Sidebar";
 import { Link } from "react-router";
 import { useNavigate } from "react-router"; // thêm đầu file
 import { useAlert } from "../../context/AlertContext";
-import { apiFetch, withUploadBase } from "../../utils/api";
+import { apiFetch, DEFAULT_PAYMENT_IMAGE, withFallbackImage, withUploadBase } from "../../utils/api";
 
 export function DatSanNgay() {
   const [bookingActionLoading, setBookingActionLoading] = useState(false);
@@ -737,6 +737,7 @@ if (role === "khachhang") {
                   src={withUploadBase(`/uploads/payments/${selectedBooking.PaymentScreenshot}`)}
                   alt="Payment"
                   style={{ width: "100%", marginTop: "10px" }}
+                  onError={(e) => withFallbackImage(e, DEFAULT_PAYMENT_IMAGE)}
                 />
               )}
               {role === "nhanvien" && !isCancelledStatus(selectedBooking.TrangThai) && (

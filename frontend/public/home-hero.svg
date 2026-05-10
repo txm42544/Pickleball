@@ -1,0 +1,24 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.5" stop-color="#1D4ED8"/>
+      <stop offset="1" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <radialGradient id="light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(380 250) rotate(25) scale(500 320)">
+      <stop stop-color="white" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#light)"/>
+  <circle cx="1230" cy="250" r="190" fill="#FACC15" fill-opacity="0.22"/>
+  <circle cx="1268" cy="287" r="96" fill="#FDE047" fill-opacity="0.30"/>
+  <circle cx="1298" cy="320" r="8" fill="white" fill-opacity="0.85"/>
+  <circle cx="1228" cy="338" r="8" fill="white" fill-opacity="0.85"/>
+  <circle cx="1340" cy="245" r="8" fill="white" fill-opacity="0.85"/>
+  <circle cx="980" cy="620" r="260" fill="#38BDF8" fill-opacity="0.18"/>
+  <text x="96" y="760" fill="white" fill-opacity="0.18" font-family="Arial, sans-serif" font-size="78" font-weight="700">
+    ALPHA PICKLEBALL
+  </text>
+</svg>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/POS.css';
-import { apiFetch, resolveImageUrl } from '../../utils/api';
+import { apiFetch, DEFAULT_PRODUCT_IMAGE, resolveImageUrl, withFallbackImage } from '../../utils/api';
 
 export function POS() {
     const [products, setProducts] = useState([]);
@@ -215,7 +215,11 @@ export function POS() {
                 <div className="product-grid">
                     {products.map(product => (
                         <div key={product.id} className="product-card-pos" onClick={() => addToCart(product)}>
-                            <img src={resolveImageUrl(product.image_url) || '/images/default-product.png'} alt={product.name} />
+                            <img
+                              src={resolveImageUrl(product.image_url) || DEFAULT_PRODUCT_IMAGE}
+                              alt={product.name}
+                              onError={(e) => withFallbackImage(e, DEFAULT_PRODUCT_IMAGE)}
+                            />
                             <p>{product.name}</p>
                             <span>{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                             <p className="product-stock">Tồn kho: {product.stock}</p> {/* THÊM DÒNG NÀY */}
