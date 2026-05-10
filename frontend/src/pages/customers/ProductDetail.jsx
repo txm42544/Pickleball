@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { API_URL } from '../../config/api';
 import { useCart } from '../../context/CartContext';
 import ProductCard from '../../components/ProductCard';
 import '../../css/ProductDetail.css';
@@ -23,7 +22,7 @@ const ProductDetail = () => {
 
     const fetchProduct = async () => {
         try {
-            const response = await axios.get(`${API_URL}/api/client/products/${id}`);
+            const response = await axios.get(`/api/client/products/${id}`);
             setProduct(response.data);
 
             // Parse colors and set first as default
@@ -33,7 +32,7 @@ const ProductDetail = () => {
             }
 
             // Fetch related products - sử dụng category_slug để nhất quán với Shop.jsx
-            const relatedResponse = await axios.get(`${API_URL}/api/client/products`, {
+            const relatedResponse = await axios.get('/api/client/products', {
                 params: { category: response.data.category_slug } // Sử dụng category_slug ở đây
             });
             setRelatedProducts(relatedResponse.data.products.filter(p => p.id !== parseInt(id)).slice(0, 4));

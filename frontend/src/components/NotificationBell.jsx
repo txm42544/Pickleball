@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { API_URL } from "../config/api";
 import "./NotificationBell.css";
 
 const POLL_MS = 10000;

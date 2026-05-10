@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { API_URL } from "../../config/api";
 import { Sidebar } from "../../components/Sidebar";
 import "../../css/XacNhanDatSan.css";
 import mbBank from "../../images/mb-bank.jpg";

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { API_URL } from "../../config/api";
 import "../../css/DatSanNgay.css";
 import { Sidebar } from "../../components/Sidebar";
 import { Link } from "react-router";

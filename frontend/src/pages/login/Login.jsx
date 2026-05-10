@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { API_URL } from "../../config/api";
 import "../../css/LoginPage.css"; // đổi tên file CSS
 import { useAlert } from "../../context/AlertContext";
 export default function Login() {
@@ -26,7 +25,7 @@ export default function Login() {
     try {
       let res;
       if (role === "admin") {
-        res = await axios.post(`${API_URL}/api/admin/taikhoan/login`, {
+        res = await axios.post("/api/admin/taikhoan/login", {
           userName: username,
           passWord: password,
           role: "Quản lý",
@@ -47,7 +46,7 @@ export default function Login() {
         }
       } else {
         res = await axios.post(
-          `${API_URL}/api/admin/taikhoan/loginKhachHang`,
+          "/api/admin/taikhoan/loginKhachHang",
           {
             userName: username,
             passWord: password,

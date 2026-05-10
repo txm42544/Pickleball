@@ -1,6 +1,5 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { API_URL } from "../../config/api";
 import { Sidebar } from "../../components/Sidebar";
 import "../../css/DatSanThang.css";
 import "../../css/DatSanNgay.css";

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { API_URL } from '../../config/api';
 import '../../css/POS.css';
 
 export function POS() {
@@ -27,7 +26,7 @@ export function POS() {
                     params.append('search', searchTerm);
                 }
 
-                const response = await fetch(`${API_URL}/api/admin/products?${params.toString()}`);
+                const response = await fetch(`/api/admin/products?${params.toString()}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');
                 }

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { API_URL } from "../../config/api";
 import "../../css/QuanLyTaiKhoanPage.css";
 import { Sidebar } from "../../components/Sidebar";
 
 export default function TaiKhoan() {
-  const API = `${API_URL}/api/admin/taikhoan`;
-  const API_KH = `${API_URL}/api/admin/khachhang`;
+  const API = "/api/admin/taikhoan";
+  const API_KH = "/api/admin/khachhang";
   
   const [accounts, setAccounts] = useState([]);
   const [customers, setCustomers] = useState([]);

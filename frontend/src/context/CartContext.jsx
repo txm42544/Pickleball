@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { API_URL } from '../config/api';
 
 const CartContext = createContext();
 
@@ -29,7 +28,7 @@ export const CartProvider = ({ children }) => {
 
   const fetchCart = async (sid) => {
     try {
-      const response = await axios.get(`${API_URL}/api/client/cart/${sid}`);
+      const response = await axios.get(`/api/client/cart/${sid}`);
       setCartItems(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching cart:', error);
@@ -39,7 +38,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = async (product, quantity = 1, color = null) => {
     try {
-      await axios.post(`${API_URL}/api/client/cart`, {
+      await axios.post(`/api/client/cart`, {
         sessionId,
         productId: product.id,
         quantity,

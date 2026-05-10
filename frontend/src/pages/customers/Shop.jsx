@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-import { API_URL } from '../../config/api';
 import ProductCard from '../../components/ProductCard';
 import '../../css/Shop.css';
 
@@ -29,7 +28,7 @@ const Shop = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get(`${API_URL}/api/client/categories`);
+      const response = await axios.get('/api/client/categories');
       setCategories(response.data);
     } catch (error) {
       console.error('Error fetching categories:', error);
@@ -49,7 +48,7 @@ const Shop = () => {
         limit: productsPerPage // Thêm tham số giới hạn sản phẩm
       };
 
-      const response = await axios.get(`${API_URL}/api/client/products`, { params });
+      const response = await axios.get('/api/client/products', { params });
       setProducts(response.data.products); // Cập nhật sản phẩm từ phản hồi
       setTotalProducts(response.data.totalCount); // Cập nhật tổng số sản phẩm
     } catch (error) {

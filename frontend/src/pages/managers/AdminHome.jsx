@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { API_URL } from "../../config/api";
 import { Sidebar } from "../../components/Sidebar";
 import "../../css/AdminHome.css";
 
@@ -21,8 +20,8 @@ export default function AdminHome() {
       try {
         setLoading(true);
         const [bookingsRes, bookingsThangRes] = await Promise.all([
-          axios.get(`${API_URL}/api/admin/san`).catch(() => ({ data: [] })),
-          axios.get(`${API_URL}/api/admin/santhang/list`).catch(() => ({ data: [] })),
+          axios.get("/api/admin/san").catch(() => ({ data: [] })),
+          axios.get("/api/admin/santhang/list").catch(() => ({ data: [] })),
         ]);
 
         const sanData = Array.isArray(bookingsRes.data) ? bookingsRes.data : [];

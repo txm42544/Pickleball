@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../config/api';
 import '../../css/AdminProducts.css';
 import { Sidebar } from '../../components/Sidebar';
 
@@ -44,7 +43,7 @@ const AdminProducts = () => {
                 limit: productsPerPage,
                 search: searchTerm,
             };
-            const response = await axios.get(`${API_URL}/api/admin/products`, { params });
+            const response = await axios.get('/api/admin/products', { params });
             setProducts(response.data.products);
             setTotalProducts(response.data.totalCount);
         } catch (error) {

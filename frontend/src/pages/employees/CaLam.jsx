@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { API_URL } from "../../config/api";
 import "../../css/CaLamPage.css"; // đổi tên file CSS
 import { Link } from "react-router-dom";
 export default function CaLam() {
-  const API = `${API_URL}/api/admin/calam`;
+  const API = "/api/admin/calam";
 
   const user = JSON.parse(localStorage.getItem("user")) || {};
   const EMP_CODE = user.maNV || "";

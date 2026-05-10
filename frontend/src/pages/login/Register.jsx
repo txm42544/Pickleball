@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { API_URL } from "../../config/api";
 import { Link } from "react-router-dom";
 import "../../css/Register.css";
 import { useAlert } from "../../context/AlertContext";

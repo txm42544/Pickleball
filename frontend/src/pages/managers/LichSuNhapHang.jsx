@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { API_URL } from '../../config/api';
 import '../../css/LichSuNhapHang.css';
 import { Sidebar } from '../../components/Sidebar'; 
 
-const API_BASE = `${API_URL}/api/admin`;
+const API_BASE = '/api/admin';
 
 const LichSuNhapHang = () => {
   const navigate = useNavigate();

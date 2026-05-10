@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import axios from 'axios';
-import { API_URL } from '../../config/api';
 import '../../css/Checkout.css';
 
 const Checkout = () => {
@@ -32,7 +31,7 @@ const Checkout = () => {
           if (khach.role === "khachhang" && khach.MaKH) { // Thay đổi: Điều kiện kiểm tra vai trò và ID khách hàng
             setIsLoggedIn(true);
             setCustomerId(khach.MaKH); // Lưu customerId vào state
-            const response = await axios.get(`${API_URL}/api/admin/taikhoan/customer/profile?id=${khach.MaKH}`); // Thay đổi: Sử dụng khach.MaKH
+            const response = await axios.get(`/api/admin/taikhoan/customer/profile?id=${khach.MaKH}`); // Thay đổi: Sử dụng khach.MaKH
             if (response.data.success) {
               const customer = response.data.customer;
               let address = customer.DiaChi || '';

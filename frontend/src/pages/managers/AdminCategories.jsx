@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../config/api';
 import '../../css/AdminCategories.css';
 import { Sidebar } from '../../components/Sidebar'; // Đảm bảo import Sidebar
 
@@ -27,7 +26,7 @@ const AdminCategories = () => {
       const params = {
         search: searchTerm,
       };
-      const response = await axios.get(`${API_URL}/api/client/categories`, { params });
+      const response = await axios.get('/api/client/categories', { params });
       setCategories(response.data);
     } catch (error) {
       console.error('Error fetching categories:', error);

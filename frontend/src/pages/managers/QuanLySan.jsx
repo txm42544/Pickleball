@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { API_URL } from "../../config/api";
 import { Sidebar } from "../../components/Sidebar";
 import "../../css/QuanLySan.css";
 import { useAlert } from "../../context/AlertContext";
 
 export default function QuanLySan() {
-  const API = `${API_URL}/api/admin/san`;
+  const API = "/api/admin/san";
   const { showAlert } = useAlert();
   
   const [courts, setCourts] = useState([]);

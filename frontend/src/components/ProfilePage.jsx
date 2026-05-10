@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';import { API_URL } from '../config/api';import BookingHistory from '../pages/customers/BookingHistory'; // Import BookingHistory thay vì PurchaseHistory
+import axios from 'axios';
+import BookingHistory from '../pages/customers/BookingHistory'; // Import BookingHistory thay vì PurchaseHistory
 import './ProfilePage.css';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
