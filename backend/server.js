@@ -15,10 +15,21 @@ const app = express();
 
 const parseAllowedOrigins = () => {
   const envValue = process.env.ALLOWED_ORIGINS || process.env.FRONTEND_URL || '';
-  return envValue
+  const origins = envValue
     .split(',')
     .map((item) => item.trim())
     .filter(Boolean);
+
+  if (process.env.NODE_ENV !== 'production') {
+    origins.push(
+      'http://localhost:5173',
+      'http://127.0.0.1:5173',
+      'http://localhost:4173',
+      'http://127.0.0.1:4173'
+    );
+  }
+
+  return Array.from(new Set(origins));
 };
 
 const allowedOrigins = parseAllowedOrigins();
@@ -28,6 +39,10 @@ const corsOptions = {
     if (!origin) return callback(null, true);
     if (allowedOrigins.length === 0) return callback(null, true);
     if (allowedOrigins.includes(origin)) return callback(null, true);
+    // Allow Railway-hosted frontend domains even if not explicitly listed.
+    if (/^https:\/\/[a-z0-9-]+(\.up)?\.railway\.app$/i.test(origin)) {
+      return callback(null, true);
+    }
     return callback(new Error(`CORS blocked for origin: ${origin}`));
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -40,7 +55,7 @@ app.use(express.json());
 
 // Middleware để phục vụ file tĩnh từ thư mục 'uploads'
 // Điều này rất quan trọng để hiển thị hình ảnh sản phẩm
-const uploadsPath = path.join(__dirname, 'uploads');
+const uploadsPath = path.resolve(__dirname, 'uploads');
 if (!fs.existsSync(uploadsPath)) {
   fs.mkdirSync(uploadsPath, { recursive: true });
 }

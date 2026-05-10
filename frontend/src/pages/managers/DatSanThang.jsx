@@ -5,7 +5,7 @@ import "../../css/DatSanThang.css";
 import "../../css/DatSanNgay.css";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
-import axios from "axios";
+import axios from '../../api/axios';
 import { useAlert } from "../../context/AlertContext";
 import { DEFAULT_PAYMENT_IMAGE, withFallbackImage, withUploadBase } from "../../utils/api";
 

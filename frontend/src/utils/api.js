@@ -1,4 +1,5 @@
 const rawOrigin = import.meta.env.VITE_API_URL || '';
+const isProd = Boolean(import.meta.env.PROD);
 export const DEFAULT_PRODUCT_IMAGE = '/pickleball-product.svg';
 export const DEFAULT_CATEGORY_IMAGE = '/pickleball-category.svg';
 export const DEFAULT_HERO_IMAGE = '/pickleball-hero.svg';
@@ -12,9 +13,11 @@ const detectDefaultOrigin = () => {
 
   const host = window.location.hostname;
   const isLocalHost = host === 'localhost' || host === '127.0.0.1';
-  // Local dev should keep relative paths so Vite proxy can forward /api and /uploads.
-  // In production without VITE_API_URL, fallback to same-origin deployment.
-  return isLocalHost ? '' : normalizeOrigin(window.location.origin);
+  if (isLocalHost) {
+    return isProd ? 'http://localhost:3000' : '';
+  }
+
+  return normalizeOrigin(window.location.origin);
 };
 
 export const API_ORIGIN = detectDefaultOrigin();

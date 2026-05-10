@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from '../../api/axios';
 import "../../css/PendingBookingModal.css";
 
 export function CheckSanNgay() {
@@ -31,7 +31,7 @@ export function CheckSanNgay() {
 
   const handleAccept = (bookingId) => {
     axios
-      .post("/api/admin/datsan/accept", { MaDatSan: bookingId })
+      .put("/api/admin/san/accept", { MaDatSan: bookingId })
       .then(() => {
         // Xóa booking vừa chấp nhận khỏi danh sách
         setBookings((prev) => prev.filter((b) => b.MaDatSan !== bookingId));

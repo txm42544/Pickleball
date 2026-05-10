@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import BookingHistory from '../pages/customers/BookingHistory'; // Import BookingHistory thay vì PurchaseHistory
 import './ProfilePage.css';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate

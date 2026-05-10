@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from '../../api/axios';
 import { Link } from "react-router-dom";
 import "../../css/Register.css";
 import { useAlert } from "../../context/AlertContext";
@@ -70,8 +70,14 @@ const [tenKh, setTenKh] = useState("");
       }
     } catch (err) {
       console.error("❌ Lỗi khi đăng ký:", err);
-      const message = "Lỗi kết nối server!";
-      setErrors({ general: message });
+      const serverMessage = err?.response?.data?.message;
+      const isNetworkError =
+        err?.code === "ERR_NETWORK" || err?.message === "Network Error";
+      setErrors({
+        general:
+          serverMessage ||
+          (isNetworkError ? "Lỗi kết nối server!" : "Đăng ký thất bại!"),
+      });
     }
   };
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../api/axios';
 import '../../css/OrderComplete.css';
 import { DEFAULT_PRODUCT_IMAGE, resolveImageUrl, withFallbackImage } from '../../utils/api';
 

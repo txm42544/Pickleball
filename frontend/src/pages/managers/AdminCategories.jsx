@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../../api/axios';
 import '../../css/AdminCategories.css';
 import { Sidebar } from '../../components/Sidebar'; // Đảm bảo import Sidebar
 import { DEFAULT_CATEGORY_IMAGE, resolveImageUrl, withFallbackImage } from '../../utils/api';

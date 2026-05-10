@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../api/axios';
 import '../../css/AdminOrders.css'; // Tái sử dụng CSS của trang Admin
 import '../../css/PurchaseHistory.css'; // CSS riêng nếu cần ghi đè
 

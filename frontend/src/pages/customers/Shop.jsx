@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../api/axios';
 import ProductCard from '../../components/ProductCard';
 import '../../css/Shop.css';
 

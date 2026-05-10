@@ -4,7 +4,7 @@ import "../../css/XacNhanDatSan.css";
 import mbBank from "../../images/mb-bank.jpg";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import axios from "axios"; // đảm bảo có import axios
+import axios from '../../api/axios'; // đảm bảo có import axios
 import { useAlert } from "../../context/AlertContext";
 import { apiFetch } from "../../utils/api";
 

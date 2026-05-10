@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from '../../api/axios';
 import "../../css/LoginPage.css"; // đổi tên file CSS
 import { useAlert } from "../../context/AlertContext";
 export default function Login() {
@@ -70,7 +70,15 @@ export default function Login() {
       }
     } catch (err) {
       console.error("Lỗi khi đăng nhập:", err);
-      setErrorMessage("Không thể kết nối server, thử lại sau");
+      const serverMessage = err?.response?.data?.message;
+      const isNetworkError =
+        err?.code === "ERR_NETWORK" || err?.message === "Network Error";
+      setErrorMessage(
+        serverMessage ||
+          (isNetworkError
+            ? "Không thể kết nối server, thử lại sau"
+            : "Đăng nhập thất bại, thử lại sau")
+      );
     }
   };
 

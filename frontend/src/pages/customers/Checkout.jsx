@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import axios from 'axios';
+import axios from '../../api/axios';
 import '../../css/Checkout.css';
 import { DEFAULT_PRODUCT_IMAGE, resolveImageUrl, withFallbackImage } from '../../utils/api';
 

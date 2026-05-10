@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from '../../api/axios';
 import "../../css/CaLamPage.css"; // đổi tên file CSS
 import { Link } from "react-router-dom";
 export default function CaLam() {
