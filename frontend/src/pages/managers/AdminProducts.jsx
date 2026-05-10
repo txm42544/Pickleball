@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/AdminProducts.css';
 import { Sidebar } from '../../components/Sidebar';
+import { resolveImageUrl } from '../../utils/api';
 
 const AdminProducts = () => {
     const [products, setProducts] = useState([]);
@@ -224,7 +225,7 @@ const AdminProducts = () => {
                                 <tr key={product.id}>
                                     <td>
                                         <img
-                                            src={product.image_url || '/images/default-product.png'}
+                                            src={resolveImageUrl(product.image_url) || '/images/default-product.png'}
                                             alt={product.name}
                                             className="product-thumb"
                                         />

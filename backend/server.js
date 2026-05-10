@@ -12,7 +12,13 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: (origin, callback) => callback(null, true),
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Middleware để phục vụ file tĩnh từ thư mục 'uploads'
@@ -27,7 +33,7 @@ app.get("/", (req, res) => {
   res.send(" Pickleball Backend đang chạy!");
 });
 
-const PORT = 3000; 
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(` Server chạy tại http://localhost:${PORT}`);
 });

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios"; // đảm bảo có import axios
 import { useAlert } from "../../context/AlertContext";
+import { apiFetch } from "../../utils/api";
 
 export function XacNhanDatSan() {
   const navigate = useNavigate();
@@ -518,7 +519,7 @@ export function XacNhanDatSan() {
     if (!tuKhoa.trim())
       return type === "ten" ? setSearchTen([]) : setSearchSdt([]);
     try {
-      const res = await fetch(
+      const res = await apiFetch(
         `${API_BASE}/search?q=${encodeURIComponent(tuKhoa)}`
       );
       if (!res.ok) throw new Error("Lỗi khi gọi API tìm kiếm");
@@ -587,7 +588,7 @@ export function XacNhanDatSan() {
       const maKh = `KH${randomNum}`;
 
       //  Gọi API thêm khách hàng
-      const res = await fetch(`${API_BASE}`, {
+      const res = await apiFetch(`${API_BASE}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -727,7 +728,7 @@ export function XacNhanDatSan() {
         console.log(" Dữ liệu gửi API đặt sân tháng (FormData)");
 
         // Gửi API với FormData (không cần headers Content-Type)
-        const res = await fetch("/api/admin/santhang/book", {
+        const res = await apiFetch("/api/admin/santhang/book", {
           method: "POST",
           body: formData,
         });
@@ -905,7 +906,7 @@ export function XacNhanDatSan() {
             formData.append("PaymentScreenshot", reqBody.PaymentScreenshot);
           }
 
-          const res = await fetch("/api/admin/san/book", {
+          const res = await apiFetch("/api/admin/san/book", {
             method: "POST",
             body: formData,
           });

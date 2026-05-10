@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../css/OrderComplete.css';
+import { resolveImageUrl } from '../../utils/api';
 
 const OrderComplete = () => {
   const { orderCode } = useParams();
@@ -68,7 +69,7 @@ const OrderComplete = () => {
             {order.items && order.items.map((item) => (
               <div key={item.id} className="item-preview">
                 <div className="item-image">
-                  <img src={item.image_url || '/images/placeholder.jpg'} alt={item.product_name} />
+                  <img src={resolveImageUrl(item.image_url) || '/images/placeholder.jpg'} alt={item.product_name} />
                   <span className="item-badge">{item.quantity}</span>
                 </div>
               </div>
@@ -145,7 +146,7 @@ const OrderComplete = () => {
             {order.items && order.items.map((item) => (
               <div key={item.id} className="order-item">
                 <div className="item-image-container">
-                  <img src={item.image_url || '/images/placeholder.jpg'} alt={item.product_name} />
+                  <img src={resolveImageUrl(item.image_url) || '/images/placeholder.jpg'} alt={item.product_name} />
                 </div>
                 <div className="item-info">
                   <h4>{item.product_name}</h4>

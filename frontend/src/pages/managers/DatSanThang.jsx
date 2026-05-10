@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import axios from "axios";
 import { useAlert } from "../../context/AlertContext";
+import { withUploadBase } from "../../utils/api";
 
 export function DatSanThang() {
 	const [activeTab] = useState("weekday");
@@ -751,7 +752,7 @@ export function DatSanThang() {
 							<p><strong>Trạng thái:</strong> {getMonthlyStatusLabel(getEffectiveStatus(selectedMonthlyBooking))}</p>
 							{selectedMonthlyBooking.PaymentScreenshot && (
 								<img
-									src={`/uploads/payments/${selectedMonthlyBooking.PaymentScreenshot}`}
+									src={withUploadBase(`/uploads/payments/${selectedMonthlyBooking.PaymentScreenshot}`)}
 									alt="Payment"
 									style={{ width: "100%", marginTop: "10px", cursor: "pointer" }}
 									onClick={() => setZoomedImage(selectedMonthlyBooking.PaymentScreenshot)}
@@ -807,7 +808,7 @@ export function DatSanThang() {
 
 			{zoomedImage && (
 				<div className="image-modal" onClick={() => setZoomedImage(null)}>
-					<img src={`/uploads/payments/${zoomedImage}`} alt="Payment" />
+					<img src={withUploadBase(`/uploads/payments/${zoomedImage}`)} alt="Payment" />
 				</div>
 			)}
 

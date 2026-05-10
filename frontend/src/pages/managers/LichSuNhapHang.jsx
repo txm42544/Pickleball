@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../css/LichSuNhapHang.css';
 import { Sidebar } from '../../components/Sidebar'; 
+import { apiFetch } from '../../utils/api';
 
 const API_BASE = '/api/admin';
 
@@ -18,7 +19,7 @@ const LichSuNhapHang = () => {
   const fetchPhieuNhap = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE}/phieunhap`);
+      const response = await apiFetch(`${API_BASE}/phieunhap`);
       const data = await response.json();
       setPhieuNhap(data.data || []);
     } catch (err) {
@@ -32,7 +33,7 @@ const LichSuNhapHang = () => {
   // Xóa phiếu nhập
   const xoaPhieuNhap = async (id, hoanTraTonKho = true) => {
     try {
-      const response = await fetch(`${API_BASE}/phieunhap/${id}`, {
+      const response = await apiFetch(`${API_BASE}/phieunhap/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ hoanTraTonKho })
@@ -73,7 +74,7 @@ const LichSuNhapHang = () => {
 
   const handleXemChiTiet = async (phieu) => {
     try {
-      const response = await fetch(`${API_BASE}/phieunhap/${phieu.id}`);
+      const response = await apiFetch(`${API_BASE}/phieunhap/${phieu.id}`);
       const data = await response.json();
       setChiTietPhieu(data.data);
       setShowModalChiTiet(true);

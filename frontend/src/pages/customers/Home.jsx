@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../css/Home.css";
+import { withUploadBase } from "../../utils/api";
 
 const Home = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -29,7 +30,7 @@ const Home = () => {
         {/* Ảnh nền */}
         <div className="hero-background">
           <img
-            src="/uploads/categories/Huong-dan-cach-chon-vot-Pickleball-phu-hop-va-chuan-nhat-Hoc-Vien-VNTA-8.webp"
+            src={withUploadBase("/uploads/categories/Huong-dan-cach-chon-vot-Pickleball-phu-hop-va-chuan-nhat-Hoc-Vien-VNTA-8.webp")}
             alt="Dụng cụ Pickleball cao cấp"
           />
           <div className="hero-overlay"></div>
@@ -125,7 +126,7 @@ const Home = () => {
             </div>
             <div className="vip-info-image">
               <img 
-                src="/uploads/categories/Huong-dan-cach-chon-vot-Pickleball-phu-hop-va-chuan-nhat-Hoc-Vien-VNTA-8.webp" 
+                src={withUploadBase("/uploads/categories/Huong-dan-cach-chon-vot-Pickleball-phu-hop-va-chuan-nhat-Hoc-Vien-VNTA-8.webp")}
                 alt="Sân VIP Pickleball"
               />
             </div>

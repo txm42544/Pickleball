@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/POS.css';
+import { apiFetch, resolveImageUrl } from '../../utils/api';
 
 export function POS() {
     const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ export function POS() {
                     params.append('search', searchTerm);
                 }
 
-                const response = await fetch(`/api/admin/products?${params.toString()}`);
+                const response = await apiFetch(`/api/admin/products?${params.toString()}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');
                 }
@@ -143,7 +144,7 @@ export function POS() {
 
             console.log('POS Checkout - Dữ liệu items đang được gửi:', itemsToSend);
 
-            const response = await fetch('/api/client/orders', {
+            const response = await apiFetch('/api/client/orders', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -214,7 +215,7 @@ export function POS() {
                 <div className="product-grid">
                     {products.map(product => (
                         <div key={product.id} className="product-card-pos" onClick={() => addToCart(product)}>
-                            <img src={product.image_url || '/images/default-product.png'} alt={product.name} />
+                            <img src={resolveImageUrl(product.image_url) || '/images/default-product.png'} alt={product.name} />
                             <p>{product.name}</p>
                             <span>{product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                             <p className="product-stock">Tồn kho: {product.stock}</p> {/* THÊM DÒNG NÀY */}

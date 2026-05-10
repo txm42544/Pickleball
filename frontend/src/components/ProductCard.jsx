@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
+import { resolveImageUrl } from '../utils/api';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -26,7 +27,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link to={`/product/${product.id}`} className="product-card">
       <div className="product-image-card">
-        <img src={product.image_url || '/images/placeholder.jpg'} alt={product.name} />
+        <img src={resolveImageUrl(product.image_url) || '/images/placeholder.jpg'} alt={product.name} />
         {product.is_new && <span className="badge badge-new">NEW</span>}
         {/* Ẩn badge giảm giá
         {product.discount_percent > 0 && (

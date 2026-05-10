@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import '../../css/Cart.css';
+import { resolveImageUrl } from '../../utils/api';
 
 const Cart = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal } = useCart();
@@ -92,7 +93,7 @@ const Cart = () => {
               {cartItems.map((item) => (
                 <div key={item.id} className="cart-item">
                   <div className="cart-product">
-                    <img src={item.image_url || '/images/placeholder.jpg'} alt={item.name} />
+                    <img src={resolveImageUrl(item.image_url) || '/images/placeholder.jpg'} alt={item.name} />
                     <div className="product-details">
                       <h3>{item.name}</h3>
                       {item.color && <p className="product-color">Màu: {item.color}</p>}

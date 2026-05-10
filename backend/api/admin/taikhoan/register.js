@@ -99,8 +99,8 @@ export async function registerKhachHang(req, res) {
 
     // Thêm vào tbl_taikhoankhachhang (sử dụng customerId đã xác định)
     await db.execute(
-      "INSERT INTO tbl_taikhoankhachhang (id, userName, passWord, email, SDT) VALUES (?, ?, ?, ?, ?)",
-      [customerId, userName, passWord, email, sdt]
+      "INSERT INTO tbl_taikhoankhachhang (id, userName, passWord, TenKh, SDT, email) VALUES (?, ?, ?, ?, ?, ?)",
+      [customerId, userName, passWord, tenKh, sdt, email]
     );
 
     res.json({ success: true, message: "Đăng ký khách hàng thành công" });

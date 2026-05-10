@@ -4,6 +4,7 @@ import { Sidebar } from "../../components/Sidebar";
 import { Link } from "react-router";
 import { useNavigate } from "react-router"; // thêm đầu file
 import { useAlert } from "../../context/AlertContext";
+import { apiFetch, withUploadBase } from "../../utils/api";
 
 export function DatSanNgay() {
   const [bookingActionLoading, setBookingActionLoading] = useState(false);
@@ -162,7 +163,7 @@ export function DatSanNgay() {
       const dateFormatted = formatDate(date.split("T")[0]);
 
       // 🔹 Lấy danh sách sân tháng từ API
-      const res = await fetch(`/api/admin/santhang/list?_ts=${Date.now()}`, {
+      const res = await apiFetch(`/api/admin/santhang/list?_ts=${Date.now()}`, {
         cache: "no-store",
       });
       if (!res.ok) throw new Error("Lỗi khi lấy danh sách đặt sân tháng");
@@ -277,7 +278,7 @@ export function DatSanNgay() {
   // 🔹 Lấy danh sách sân + sự kiện
   const fetchCourts = async (date) => {
     try {
-      const resCourts = await fetch(`${API_BASE}?date=${date}`);
+      const resCourts = await apiFetch(`${API_BASE}?date=${date}`);
       if (!resCourts.ok) throw new Error("Lỗi khi lấy danh sách sân");
       let courtsData = await resCourts.json();
 
@@ -632,7 +633,7 @@ if (role === "khachhang") {
     if (!selectedBooking?.MaDatSan || bookingActionLoading) return;
     try {
       setBookingActionLoading(true);
-      const res = await fetch(`${API_BASE}/accept`, {
+      const res = await apiFetch(`${API_BASE}/accept`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ MaDatSan: selectedBooking.MaDatSan }),
@@ -661,7 +662,7 @@ if (role === "khachhang") {
 
     try {
       setBookingActionLoading(true);
-      const res = await fetch(`${API_BASE}/cancel`, {
+      const res = await apiFetch(`${API_BASE}/cancel`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ MaDatSan: selectedBooking.MaDatSan }),
@@ -680,8 +681,6 @@ if (role === "khachhang") {
       setBookingActionLoading(false);
     }
   };
-
-  const BASE_URL = ""; // port backend của bạn
 
   return (
     <div className="sanngay-container">
@@ -735,7 +734,7 @@ if (role === "khachhang") {
               </p>
               {selectedBooking.PaymentScreenshot && (
                 <img
-                  src={`${BASE_URL}/uploads/payments/${selectedBooking.PaymentScreenshot}`}
+                  src={withUploadBase(`/uploads/payments/${selectedBooking.PaymentScreenshot}`)}
                   alt="Payment"
                   style={{ width: "100%", marginTop: "10px" }}
                 />

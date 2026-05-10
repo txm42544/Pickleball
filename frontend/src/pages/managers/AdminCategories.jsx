@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/AdminCategories.css';
 import { Sidebar } from '../../components/Sidebar'; // Đảm bảo import Sidebar
+import { resolveImageUrl } from '../../utils/api';
 
 const AdminCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -161,7 +162,7 @@ const AdminCategories = () => {
             <div key={category.id} className="category-card">
               <div className="category-image">
                 {category.image_url ? (
-                  <img src={category.image_url} alt={category.name} />
+                  <img src={resolveImageUrl(category.image_url)} alt={category.name} />
                 ) : (
                   <div className="no-image">No Image</div>
                 )}

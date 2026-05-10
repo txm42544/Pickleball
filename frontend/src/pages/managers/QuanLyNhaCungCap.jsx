@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../css/QuanLyNhaCungCap.css';
 import { Sidebar } from '../../components/Sidebar';
+import { apiFetch } from '../../utils/api';
 
 const API_BASE = '/api/admin';
 
@@ -16,7 +17,7 @@ const QuanLyNhaCungCap = () => {
   const fetchNhaCungCap = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE}/nhacungcap`);
+      const response = await apiFetch(`${API_BASE}/nhacungcap`);
       const data = await response.json();
       setNhaCungCap(data.data || []);
     } catch (err) {
@@ -29,7 +30,7 @@ const QuanLyNhaCungCap = () => {
 
   const themNhaCungCap = async (ten) => {
     try {
-      const response = await fetch(`${API_BASE}/nhacungcap`, {
+      const response = await apiFetch(`${API_BASE}/nhacungcap`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ten })
@@ -50,7 +51,7 @@ const QuanLyNhaCungCap = () => {
 
   const xoaNhaCungCap = async (id) => {
     try {
-      const response = await fetch(`${API_BASE}/nhacungcap/${id}`, {
+      const response = await apiFetch(`${API_BASE}/nhacungcap/${id}`, {
         method: 'DELETE'
       });
 

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useCart } from '../../context/CartContext';
 import ProductCard from '../../components/ProductCard';
 import '../../css/ProductDetail.css';
+import { resolveImageUrl } from '../../utils/api';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -67,7 +68,11 @@ const ProductDetail = () => {
         return <div className="loading">Đang tải...</div>;
     }
 
-    const images = product.images ? JSON.parse(product.images) : [product.image_url];
+    const rawImages = product.images ? JSON.parse(product.images) : [product.image_url];
+    const images = rawImages
+        .map((img) => resolveImageUrl(String(img || '').replace(/"/g, '')))
+        .filter(Boolean);
+    const displayImages = images.length ? images : [resolveImageUrl(product.image_url)];
     const colors = product.colors ? JSON.parse(product.colors) : [];
 
     return (
@@ -87,18 +92,18 @@ const ProductDetail = () => {
                     {/* Image Gallery */}
                     <div className="product-gallery">
                         <div className="gallery-thumbs">
-                            {images.map((img, index) => (
+                            {displayImages.map((img, index) => (
                                 <button
                                     key={index}
                                     className={`thumb ${selectedImage === index ? 'active' : ''}`}
                                     onClick={() => setSelectedImage(index)}
                                 >
-                                    <img src={img.replace(/"/g, '') || '/images/placeholder.jpg'} alt={`${product.name} ${index + 1}`} />
+                                    <img src={img || '/images/placeholder.jpg'} alt={`${product.name} ${index + 1}`} />
                                 </button>
                             ))}
                         </div>
                         <div className="gallery-main">
-                            <img src={images[selectedImage]?.replace(/"/g, '') || '/images/placeholder.jpg'} alt={product.name} />
+                            <img src={displayImages[selectedImage] || '/images/placeholder.jpg'} alt={product.name} />
                             {product.is_new && <span className="badge badge-new">MỚI</span>}
                             {product.discount_percent > 0 && (
                                 <span className="badge badge-discount">-{product.discount_percent}%</span>
