@@ -12,10 +12,12 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+// CORS configuration - ĐẶT NGAY TRÊN CÙNG trước mọi route
 const corsOptions = {
-  origin: '*',
+  origin: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
