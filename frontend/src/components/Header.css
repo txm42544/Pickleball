@@ -1,0 +1,352 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+/* Đảm bảo các action-icon có kiểu dáng đồng nhất */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Khoảng cách giữa các mục hành động */
+}
+
+.action-icon {
+    display: flex;
+    align-items: center;
+    color: #333; /* Màu chữ mặc định */
+    text-decoration: none;
+    transition: color 0.2s ease;
+    cursor: pointer; /* Cho cả nút logout */
+}
+
+.action-icon:hover {
+    color: #4CAF50; /* Màu khi hover (tương ứng với màu xanh logo) */
+}
+
+.action-icon svg {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+/* Kiểu dáng cho icon Đăng xuất mới */
+.logout-icon {
+    /* Đảm bảo nó có cùng kiểu dáng với login-icon */
+    display: flex;
+    align-items: center;
+    font-size: 15px; /* Giữ kích thước chữ đồng nhất */
+    white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+}
+
+/* Điều chỉnh lại khoảng cách tổng thể nếu cần */
+.cart-icon-wrapper {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+.cart-icon-wrapper:hover {
+    color: #4CAF50;
+}
+.header-main {
+  padding: 15px 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* ===== Logo & mô tả ===== */
+.logo {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-color, #007bff);
+  margin: 0;
+}
+
+.header-tagline {
+  font-size: 0.9rem;
+  color: var(--text-gray, #555);
+  margin-top: 4px;
+}
+
+.header-description {
+  font-size: 0.8rem;
+  color: var(--text-light, #777);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* ===== Navigation ===== */
+.nav {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+
+.nav a {
+  font-weight: 500;
+  color: var(--text-dark, #333);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: var(--primary-color, #007bff);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color, #007bff);
+  transition: width 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== Actions (Account & Cart) ===== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Điều chỉnh khoảng cách giữa các phần tử */
+}
+
+.header-search-form {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 20px; /* Bo tròn góc cho thanh tìm kiếm */
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.header-search-form:focus-within {
+  border-color: var(--primary-color, #007bff);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.header-search-input {
+  border: none;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  outline: none;
+  flex-grow: 1;
+  min-width: 120px; /* Đảm bảo có chiều rộng tối thiểu */
+}
+
+.header-search-button {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--text-gray, #555);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.header-search-button:hover {
+  color: var(--primary-color, #007bff);
+}
+
+/* ===== Giỏ hàng ===== */
+.cart-icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Space between icon and text */
+  text-decoration: none;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.cart-icon-wrapper:hover {
+  color: var(--primary-color, #007bff);
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--primary-color, #007bff);
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .header-description {
+    display: none;
+  }
+
+  .cart-text {
+    display: none;
+  }
+
+  .cart-icon-wrapper {
+    gap: 0;
+  }
+
+  .header-actions {
+    width: 100%; /* Các hành động chiếm toàn bộ chiều rộng */
+    justify-content: space-around; /* Phân bố đều các mục */
+    gap: 10px; /* Giảm khoảng cách */
+  }
+
+  .header-search-form {
+    flex-grow: 1; /* Cho phép form tìm kiếm mở rộng */
+    max-width: 250px; /* Giới hạn chiều rộng tối đa trên màn hình nhỏ hơn */
+  }
+
+  .header-search-input {
+    min-width: unset; /* Bỏ giới hạn chiều rộng tối thiểu trên màn hình nhỏ */
+  }
+}
+
+@media (max-width: 480px) {
+  .header-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .header-search-form {
+    width: 100%;
+    max-width: 100%;
+    order: -1; /* Đặt form tìm kiếm lên đầu */
+    margin-bottom: 10px;
+  }
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* khoảng cách giữa các nút */
+}
+
+.login-button {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.login-button:hover {
+  color: #ffcc00;
+}
+
+/* Container chính của dropdown */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tiêu đề menu chính */
+.dropdown-title {
+  cursor: pointer;
+  color: #333;
+  padding: 10px 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.dropdown-title:hover {
+  color: #007bff;
+}
+
+/* Menu con */
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* nằm ngay dưới nút chính */
+  left: 0;
+  background-color: #fff;
+  min-width: 180px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  z-index: 999;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Khi hover vào cả nút hoặc menu con đều giữ mở */
+.nav-dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Các item con */
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f8ff;
+}

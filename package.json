@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix frontend run dev"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}

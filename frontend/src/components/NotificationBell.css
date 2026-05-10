@@ -1,0 +1,68 @@
+.notify-bell {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: #111827 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: none;
+  z-index: 1150;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.notify-bell:hover {
+  transform: translateY(-1px) scale(1.03);
+  opacity: 0.9;
+}
+
+.notify-bell-icon {
+  display: block;
+  font-size: 26px;
+  line-height: 1;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+}
+
+.notify-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  animation: pulseNotify 1.2s ease-in-out infinite;
+}
+
+@keyframes pulseNotify {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .notify-bell {
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .notify-bell-icon {
+    font-size: 24px;
+  }
+}

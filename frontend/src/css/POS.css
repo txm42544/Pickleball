@@ -1,0 +1,412 @@
+.pos-container {
+    display: flex;
+    flex: 1;
+    /* Make pos-container fill the main-content space */
+    /* height: 100vh; */
+    /* Xóa dòng này, chiều cao sẽ được quản lý bởi flex:1 và parent */
+    font-family: sans-serif;
+    background-color: #f4f7fa;
+    padding: 30px;
+    box-sizing: border-box;
+    /* Quan trọng để padding được tính vào kích thước flex */
+}
+
+.pos-search {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* products area */
+.pos-products {
+    flex: 1.6;
+    padding: 20px;
+    overflow-y: auto;
+    /* Cho phép phần sản phẩm cuộn độc lập */
+    border-right: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+/* sidebar / invoice */
+.pos-sidebar {
+    width: 450px;
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    /* Xếp chồng các phần tử con theo chiều dọc */
+    height: 100%;
+    /* Chiếm 100% chiều cao khả dụng của parent (pos-container) */
+    overflow-y: auto;
+    /* Cho phép sidebar cuộn nếu nội dung tràn */
+    box-sizing: border-box;
+}
+
+.current-sale-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 18px;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+    /* Cho phép thẻ này mở rộng để lấp đầy không gian trong sidebar */
+    min-height: 0;
+    /* Quan trọng cho các flex item có overflow */
+}
+
+.sale-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111;
+}
+
+/* sale items */
+.sale-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 260px;
+    /* Giữ nguyên để danh sách sản phẩm cuộn bên trong thẻ */
+    overflow-y: auto;
+    /* Điều này làm cho danh sách sản phẩm có thể cuộn */
+    padding-right: 8px;
+    flex-shrink: 0;
+    /* Ngăn không cho nó bị thu nhỏ quá mức */
+}
+
+.sale-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 10px;
+    background: #fafafa;
+}
+
+.sale-item-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 65%;
+}
+
+.sale-item-name {
+    font-weight: 600;
+    color: #111;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sale-item-sub {
+    display: flex;
+    gap: 10px;
+    color: #28a745;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.sale-item-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.qty-btn {
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* summary */
+.sale-summary {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.summary-row,
+.summary-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.98rem;
+    color: #333;
+}
+
+.summary-total-row {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* form */
+.sale-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.sale-form label {
+    font-size: 0.9rem;
+    color: #444;
+    margin-top: 6px;
+}
+
+.sale-form input,
+.sale-form select {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: #fff;
+}
+
+/* action buttons */
+.sale-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.btn-clear {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-complete {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* keep existing styles for product cards */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+}
+
+.product-card-pos {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #fff;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.product-card-pos:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card-pos img {
+    display: block;
+    margin: 0 auto 10px;
+    max-width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+.product-card-pos p {
+    font-weight: bold;
+    margin: 5px 0;
+    font-size: 0.9rem;
+    min-height: 70px;
+
+}
+
+.product-card-pos span {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.pos-cart {
+    flex: 1;
+    /* Giữ nguyên, nhưng tỷ lệ với .pos-products đã thay đổi */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.pos-cart h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style cho khung thông tin khách hàng */
+.customer-info {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.customer-info h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.customer-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+.item-info span {
+    font-weight: 500;
+}
+
+.item-info small {
+    display: block;
+    color: #666;
+}
+
+.item-controls {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.item-controls button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.item-controls span {
+    padding: 0 12px;
+    font-weight: 500;
+}
+
+.item-total {
+    min-width: 80px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px dashed #ccc;
+}
+
+/* Style cho lựa chọn thanh toán */
+.payment-method {
+    margin-bottom: 20px;
+}
+
+.payment-method h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.payment-options {
+    display: flex;
+    gap: 20px;
+}
+
+.payment-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.checkout-btn:hover {
+    background-color: #0056b3;
+}
+
+.qty-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    height: 30px;
+    margin: 0 4px;
+    font-size: 14px;
+}
+
+/* Ẩn mũi tên tăng giảm của input number */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

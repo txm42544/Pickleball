@@ -1,0 +1,113 @@
+win
+
+cd C:\Users\DELL\Desktop\DoAnQuanLyPickleBall-main\backend; npm install
+
+cd C:\Users\DELL\Desktop\DoAnQuanLyPickleBall-main\frontend; npm install
+
+cd C:\Users\DELL\Desktop\DoAnQuanLyPickleBall-main\backend; npm start
+
+cd C:\Users\DELL\Desktop\DoAnQuanLyPickleBall-main\frontend; npm run dev
+
+
+mysql -u root -proot123 -e "USE pickleball; ALTER TABLE tbl_datsan ADD COLUMN TienDichVu DECIMAL(15,2) DEFAULT 0, ADD COLUMN DanhSachDichVu TEXT, ADD COLUMN PaymentScreenshot VARCHAR(255);"
+
+
+cd d:\DoAnQuanLyPickleBall-main\backend; node add-columns.js
+
+cd d:\DoAnQuanLyPickleBall-main\backend; node server.js
+
+node add-payment-screenshot-column.js
+
+cd d:\DoAnQuanLyPickleBall-main\backend; node server.js
+
+Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; cd d:\DoAnQuanLyPickleBall-main\backend; node server.js
+
+Set-Location d:\DoAnQuanLyPickleBall-main\backend; node server.js
+
+Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+
+Set-Location d:\DoAnQuanLyPickleBall-main\backend; node server.js
+
+Set-Location d:\DoAnQuanLyPickleBall-main\frontend; npm run dev
+
+cd d:\DoAnQuanLyPickleBall-main\backend; Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; npm start
+
+cd d:\DoAnQuanLyPickleBall-main\backend; Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; npm start
+
+cd d:\DoAnQuanLyPickleBall-main\frontend; npm run dev
+
+
+# 1. Cài dependencies Backend
+cd d:\DoAnQuanLyPickleBall-main\backend
+npm install
+
+# 2. Cài dependencies Frontend  
+cd d:\DoAnQuanLyPickleBall-main\frontend
+npm install
+
+# 3. Import database MySQL (cần có MySQL đã cài)
+mysql -u root -p < d:\DoAnQuanLyPickleBall-main\pickleball.sql
+
+# 4. Chạy Backend (terminal 1)
+cd d:\DoAnQuanLyPickleBall-main\backend
+npm start
+
+# 5. Chạy Frontend (terminal 2)
+cd d:\DoAnQuanLyPickleBall-main\frontend
+npm run dev
+
+
+mac 
+
+cd ~/DoAnQuanLyPickleBall-main/backend
+npm install
+
+cd ~/DoAnQuanLyPickleBall-main/frontend
+npm install
+
+cd ~/Documents/DoAnQuanLyPickleBall-main/backend && npm start
+
+cd ~/Documents/DoAnQuanLyPickleBall-main/frontend && npm run dev
+
+
+
+
+mysql -u root -proot123 -e "USE pickleball; ALTER TABLE tbl_datsan ADD COLUMN TienDichVu DECIMAL(15,2) DEFAULT 0, ADD COLUMN DanhSachDichVu TEXT, ADD COLUMN PaymentScreenshot VARCHAR(255);"
+
+/usr/local/mysql/bin/mysql -u root -proot123 -e "USE pickleball; ALTER TABLE tbl_datsan ADD COLUMN TienDichVu DECIMAL(15,2) DEFAULT 0, ADD COLUMN DanhSachDichVu TEXT, ADD COLUMN PaymentScreenshot VARCHAR(255);"
+
+mysql --version
+
+cd ~/DoAnQuanLyPickleBall-main/backend
+node add-columns.js
+
+cd ~/DoAnQuanLyPickleBall-main/backend
+node server.js
+
+# 1. Cài dependencies Backend
+cd ~/DoAnQuanLyPickleBall-main/backend
+npm install
+
+# 2. Cài dependencies Frontend
+cd ~/DoAnQuanLyPickleBall-main/frontend
+npm install
+
+# 3. Import database MySQL
+mysql -u root -p < ~/DoAnQuanLyPickleBall-main/pickleball.sql
+
+# 4. Chạy Backend (terminal 1)
+cd ~/DoAnQuanLyPickleBall-main/backend
+npm start
+
+# 5. Chạy Frontend (terminal 2)
+cd ~/DoAnQuanLyPickleBall-main/frontend
+npm run dev
+
+
+#chạy 2 dòng này 
+
+# Terminal 1: Backend
+cd ~/Documents/DoAnQuanLyPickleBall-main/backend && npm start
+
+# Terminal 2: Frontend
+cd ~/Documents/DoAnQuanLyPickleBall-main/frontend && npm run dev

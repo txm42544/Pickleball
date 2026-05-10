@@ -1,0 +1,366 @@
+.tk-app {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  background: #f6f7fb;
+}
+
+.tk-container {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  margin: 20px;
+  color: #1f2937;
+}
+
+.tk-header {
+  margin-bottom: 24px;
+}
+
+.tk-header h2 {
+  color: #1f2937;
+  font-weight: 700;
+  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tk-header h2 svg {
+  stroke: #6366f1;
+}
+
+/* Tabs */
+.tk-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+}
+
+.tk-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tk-tab:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.tk-tab.active {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+}
+
+.tk-tab svg {
+  stroke: currentColor;
+}
+
+/* Toolbar */
+.tk-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.tk-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 16px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.tk-search svg {
+  stroke: #9ca3af;
+}
+
+.tk-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #1f2937;
+  font-size: 14px;
+  width: 100%;
+}
+
+.tk-search input::placeholder {
+  color: #9ca3af;
+}
+
+.tk-btn-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.tk-btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+}
+
+/* Table */
+.tk-table {
+  border-radius: 12px;
+  overflow: hidden;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #e5e7eb;
+}
+
+.tk-table th {
+  background: #f9fafb;
+  color: #374151;
+  text-align: center;
+  padding: 14px 12px;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tk-table td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px;
+  background: #ffffff;
+  color: #374151;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tk-table tbody tr:hover td {
+  background: #f9fafb;
+}
+
+/* Role Badge */
+.tk-role-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tk-role-badge.staff {
+  background: rgba(14, 165, 233, 0.15);
+  color: #0284c7;
+}
+
+.tk-role-badge.manager {
+  background: rgba(168, 85, 247, 0.15);
+  color: #9333ea;
+}
+
+.tk-role-badge.admin {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+}
+
+/* Action Buttons */
+.tk-btn-warning,
+.tk-btn-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 80px;
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 4px;
+  border: none;
+}
+
+.tk-btn-warning {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.tk-btn-warning:hover {
+  background: #fde68a;
+  transform: translateY(-2px);
+}
+
+.tk-btn-danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.tk-btn-danger:hover {
+  background: #fecaca;
+  transform: translateY(-2px);
+}
+
+.tk-btn-warning svg,
+.tk-btn-danger svg {
+  stroke: currentColor;
+}
+
+/* Modal */
+.tk-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.tk-modal-content {
+  background: #ffffff;
+  width: 450px;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.tk-modal-content h4 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.tk-modal-content .form-label {
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.tk-modal-content .form-control,
+.tk-modal-content .form-select {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #1f2937;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.tk-modal-content .form-control:focus,
+.tk-modal-content .form-select:focus {
+  background: #ffffff;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  outline: none;
+  color: #1f2937;
+}
+
+.tk-modal-content .form-control::placeholder {
+  color: #9ca3af;
+}
+
+.tk-modal-content .form-select option {
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.tk-btn-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tk-btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+}
+
+.tk-btn-save svg {
+  stroke: currentColor;
+}
+
+.tk-btn-cancel {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.tk-btn-cancel:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tk-app {
+    grid-template-columns: 1fr;
+  }
+  
+  .tk-tabs {
+    flex-direction: column;
+  }
+  
+  .tk-toolbar {
+    flex-direction: column;
+  }
+  
+  .tk-search {
+    max-width: 100%;
+  }
+  
+  .tk-modal-content {
+    width: 90%;
+    margin: 0 20px;
+  }
+}

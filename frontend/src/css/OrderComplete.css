@@ -1,0 +1,272 @@
+.order-complete-page {
+  padding: 40px 0 80px;
+}
+
+.success-card {
+  max-width: 600px;
+  margin: 40px auto 60px;
+  padding: 60px 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.success-card h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.order-items-preview {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.order-items-preview.scrollable {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-height: 100px;
+  overflow-y: auto;
+  padding: 10px;
+  /* tránh thanh cuộn đè lên nội dung */
+}
+
+.order-items-preview.scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.order-items-preview.scrollable::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.item-preview {
+  position: relative;
+}
+
+.item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: var(--bg-light);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--text-dark);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.order-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: var(--bg-light);
+  border-radius: 8px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+}
+
+.detail-value {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.success-card .btn {
+  min-width: 200px;
+}
+
+/* Order Info Section */
+.order-info-section {
+  margin-bottom: 40px;
+}
+
+.order-info-section h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.info-card {
+  padding: 25px;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.info-card h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info-card p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+/* Order Items Section */
+.order-items-section {
+  margin-bottom: 40px;
+}
+
+.order-items-section h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.items-list {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.item-info h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.item-info p {
+  font-size: 0.9rem;
+  color: var(--text-gray);
+  margin-bottom: 3px;
+}
+
+.item-total {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.order-totals {
+  padding: 20px 25px;
+  background: var(--bg-light);
+  border-radius: 0 0 8px 8px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.total-row.grand-total {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 2px solid var(--border-color);
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .success-card {
+    padding: 40px 20px;
+  }
+
+  .order-details {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+.order-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-outline {
+  background-color: white;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.btn-outline:hover {
+  background-color: #007bff;
+  color: white;
+} 
