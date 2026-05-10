@@ -1,5 +1,9 @@
 const rawOrigin = import.meta.env.VITE_API_URL || '';
 const isProd = Boolean(import.meta.env.PROD);
+const DEPLOY_HOST_MAP = {
+  'illustrious-delight-production-1319.up.railway.app':
+    'https://pickleball-production-8622.up.railway.app',
+};
 export const DEFAULT_PRODUCT_IMAGE = '/pickleball-product.svg';
 export const DEFAULT_CATEGORY_IMAGE = '/pickleball-category.svg';
 export const DEFAULT_HERO_IMAGE = '/pickleball-hero.svg';
@@ -8,6 +12,10 @@ export const DEFAULT_PAYMENT_IMAGE = '/pickleball-payment.svg';
 const normalizeOrigin = (origin) => String(origin || '').replace(/\/+$/, '');
 
 const detectDefaultOrigin = () => {
+  if (typeof window !== 'undefined') {
+    const mappedOrigin = DEPLOY_HOST_MAP[window.location.hostname];
+    if (mappedOrigin) return normalizeOrigin(mappedOrigin);
+  }
   if (rawOrigin) return normalizeOrigin(rawOrigin);
   if (typeof window === 'undefined') return '';
 
