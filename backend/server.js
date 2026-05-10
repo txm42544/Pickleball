@@ -19,7 +19,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.options('/(.*)', cors(corsOptions));
 app.use(express.json());
 
 // Middleware để phục vụ file tĩnh từ thư mục 'uploads'

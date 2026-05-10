@@ -1,21 +1,25 @@
 import mysql from 'mysql2/promise';
 
-// --- BẮT ĐẦU DEBUG ---
-// In các biến môi trường database ra để kiểm tra
-console.log({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT,
+// Đọc các biến môi trường, nếu không có thì fallback về XAMPP defaults
+const dbConfig = {
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASS || '',
+  database: process.env.DB_NAME || 'pickleball',
+  port: process.env.DB_PORT || 3306,
+};
+
+// In các biến môi trường ra để debug
+console.log('Database Configuration:', {
+  host: dbConfig.host,
+  user: dbConfig.user,
+  database: dbConfig.database,
+  port: dbConfig.port,
+  password: dbConfig.password ? '***' : '(empty)',
 });
-// --- KẾT THÚC DEBUG ---
 
 const pool = mysql.createPool({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT,
+  ...dbConfig,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
